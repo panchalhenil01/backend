@@ -1,0 +1,62 @@
+#include <iostream.h>
+#include <conio.h>
+#include <string.h>
+
+class Lecture
+{
+    char lectname[5];
+    char subname[5];
+    char courname[5];
+    int numlect;
+
+public:
+    Lecture(char *l = "", char *s = "", char *c = "", int n = 0)
+    {
+        strcpy(lectname, l);
+        strcpy(subname, s);
+        strcpy(courname, c);
+        numlect = n;
+    }
+
+    void input()
+    {
+        cout << "\n Enter Lecture Name   : ";
+        cin >> lectname;
+        cout << " Enter Subject Name   : ";
+        cin >> subname;
+        cout << " Enter Course Name    : ";
+        cin >> courname;
+        cout << " Enter Lecture Number : ";
+        cin >> numlect;
+    }
+
+    void display()
+    {
+        cprintf("\n================ Lecture Management System ================");
+        cout << "\n Lecture Name   : " << lectname;
+        cout << "\n Subject Name   : " << subname;
+        cout << "\n Course Name    : " << courname;
+        cout << "\n Lecture Number : " << numlect;
+        cout << "\n----------------------------------------------------------\n";
+    }
+};
+
+void main()
+{
+    clrscr();
+
+    const int number = 5;
+    Lecture L[number];
+    for (int i = 0; i < number; i++)
+    {
+        cout << "\nEnter details of Lecture " << i + 1 << " :\n";
+        L[i].input();
+    }
+    cprintf("\n************ Lecture Management System ************\n");
+    for (int i = 0; i < number; i++)
+    {
+        L[i].display();
+    }
+
+    getch();
+}
