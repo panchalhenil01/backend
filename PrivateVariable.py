@@ -28,8 +28,9 @@ account.deposit(500)
 print(account.get_balance())
 
 account.withdraw(200)
-print(withdraw.get_balance())
+print(account.get_balance())
 
 print(account._BankAccount__balance)
 
             
+
