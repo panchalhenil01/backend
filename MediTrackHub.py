@@ -4,7 +4,7 @@ import sqlite3
 import csv
 import os
 
-# --------------------------- Database Setup ---------------------------
+
 class Database:
     def __init__(self):
         self.conn = sqlite3.connect("meditrack.db")
@@ -59,7 +59,7 @@ class Database:
         except sqlite3.Error as e:
             messagebox.showerror("Database Error", str(e))
 
-# --------------------------- Main Application ---------------------------
+
 class MediTrackApp:
     def __init__(self, root):
         self.root = root
@@ -69,7 +69,7 @@ class MediTrackApp:
 
         self.show_login_screen()
 
-    # ------------------- LOGIN -------------------
+   
     def show_login_screen(self):
         self.clear_screen()
         tk.Label(self.root, text="MediTrack Login", font=("Arial", 24, "bold")).pack(pady=40)
@@ -110,7 +110,7 @@ class MediTrackApp:
         except Exception as e:
             messagebox.showerror("Error", f"Registration failed: {e}")
 
-    # ------------------- DASHBOARD -------------------
+    
     def show_dashboard(self):
         self.clear_screen()
         tk.Label(self.root, text="🏥 MediTrack Dashboard", font=("Arial", 22, "bold")).pack(pady=20)
@@ -124,7 +124,7 @@ class MediTrackApp:
         tk.Button(btn_frame, text="Export Data", width=20, command=self.export_data).grid(row=1, column=0, padx=10, pady=10)
         tk.Button(btn_frame, text="Logout", width=20, command=self.show_login_screen).grid(row=1, column=2, padx=10, pady=10)
 
-    # ------------------- PATIENT MANAGEMENT -------------------
+   
     def manage_patients(self):
         self.clear_screen()
         tk.Label(self.root, text="👨‍⚕️ Patient Management", font=("Arial", 20, "bold")).pack(pady=10)
@@ -165,7 +165,7 @@ class MediTrackApp:
 
         tk.Button(form, text="Add Patient", command=add_patient).grid(row=5, columnspan=2, pady=10)
 
-        # Table
+       
         table = ttk.Treeview(self.root, columns=("ID", "Name", "Age", "Gender", "Contact", "Condition"), show="headings")
         for col in table["columns"]:
             table.heading(col, text=col)
@@ -177,10 +177,10 @@ class MediTrackApp:
 
         tk.Button(self.root, text="Back", command=self.show_dashboard).pack(pady=10)
 
-    # ------------------- APPOINTMENT MANAGEMENT -------------------
+
     def manage_appointments(self):
         self.clear_screen()
-        tk.Label(self.root, text="📅 Appointment Management", font=("Arial", 20, "bold")).pack(pady=10)
+        tk.Label(self.root, text=" Appointment Management", font=("Arial", 20, "bold")).pack(pady=10)
 
         form = tk.Frame(self.root)
         form.pack(pady=10)
@@ -220,7 +220,7 @@ class MediTrackApp:
 
         tk.Button(self.root, text="Back", command=self.show_dashboard).pack(pady=10)
 
-    # ------------------- BILLING -------------------
+   
     def manage_billing(self):
         self.clear_screen()
         tk.Label(self.root, text="💳 Billing Management", font=("Arial", 20, "bold")).pack(pady=10)
@@ -259,7 +259,7 @@ class MediTrackApp:
 
         tk.Button(self.root, text="Back", command=self.show_dashboard).pack(pady=10)
 
-    # ------------------- EXPORT DATA -------------------
+    
     def export_data(self):
         try:
             file = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=[("CSV Files", "*.csv")])
@@ -278,14 +278,13 @@ class MediTrackApp:
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
-    # ------------------- Utility -------------------
+   
     def clear_screen(self):
         for widget in self.root.winfo_children():
             widget.destroy()
 
-
-# --------------------------- Run App ---------------------------
 if __name__ == "__main__":
     root = tk.Tk()
     app = MediTrackApp(root)
     root.mainloop()
+
